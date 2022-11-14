@@ -4,9 +4,7 @@ const Card = (props) => {
   const { letter } = props;
 
   return (
-    <div className="card">
-      <div className="letter">{letter}</div>
-    </div>
+    <p className="card">{letter}</p>
   );
 };
 
