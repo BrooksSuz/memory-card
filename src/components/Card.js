@@ -1,10 +1,10 @@
 import React from "react";
 
 const Card = (props) => {
-  const { letter } = props;
+  const { letter, randomizeCards } = props;
 
   return (
-    <p className="card">{letter}</p>
+    <p className="card" type="button" onClick={randomizeCards}>{letter}</p>
   );
 };
 
