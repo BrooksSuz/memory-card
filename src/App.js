@@ -7,7 +7,8 @@ const App = () => {
   const [bestScore, setBestScore] = useState(0);
 
   const updateCurrentScore = () => {
-    setCurrentScore(currentScore + 1);
+    let score = currentScore + 1;
+    setCurrentScore(score);
   };
 
   const updateBestScore = () => {
@@ -19,7 +20,10 @@ const App = () => {
 
       <header>
         <h1>Memory Card Game</h1>
-        <Scoreboard currentScore={currentScore} bestScore={bestScore} />
+        <Scoreboard
+          currentScore={currentScore}
+          bestScore={bestScore}
+        />
       </header>
 
       <Cardlist

@@ -1,25 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Card = (props) => {
-  const { letter, setStateOfParent } = props;
+  const {
+    letter,
+    setStateOfParent,
+    updateCurrentScore,
+    updateBestScore
+  } = props;
 
-  const [clicked, setClicked] = useState();
-
-  const updateClicked = () => {
-    if (clicked) {
-      console.log('You lose');
-    } else {
-      setClicked(true);
-    }
-  };
+  const [clicked, setClicked] = useState(0);
 
   const handleClick = () => {
+    if (clicked === 0) {
+      updateCurrentScore();
+      setClicked(1);
+    } else if (clicked === 1) {
+      console.log('You lose');
+      return null;
+    }
     setStateOfParent();
-    updateClicked();
   };
 
+  useEffect(() => {
+    updateCurrentScore();
+    updateBestScore();
+  }, [updateBestScore, updateCurrentScore]);
+
   return (
-    <button className="card" onClick={handleClick}>{letter}</button>
+    <button className="card" clicked={clicked} onClick={handleClick}>{letter}</button>
   );
 };
 
