@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
-const Cardlist = () => {
+const Cardlist = (props) => {
+  const { updateCurrentScore, updateBestScore } = props;
+
   const [arrCard, setArrCard] = useState([
     <Card letter='a' key='0' setStateOfParent={setStateOfParent} />,
     <Card letter='b' key='1' setStateOfParent={setStateOfParent} />,
@@ -21,17 +23,20 @@ const Cardlist = () => {
     return arrTemp;
   };
 
+  // hoist function
   function setStateOfParent() {
-    setArrCard(randomizeCards)
+    setArrCard(randomizeCards);
   }
 
   useEffect(() => {
     setArrCard(randomizeCards);
-  }, [])
+  }, []);
 
   return (
   <div className="cardlist">
+
     {arrCard}
+    
   </div>
   );
 };

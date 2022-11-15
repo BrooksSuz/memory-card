@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState }from "react";
 import Cardlist from "./components/Cardlist";
+import Scoreboard from "./components/Scoreboard";
 
 const App = () => {
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
+  const updateCurrentScore = () => {
+    setCurrentScore(currentScore + 1);
+  };
+
+  const updateBestScore = () => {
+    setBestScore(currentScore);
+  };
+
   return (
     <div className="container">
 
       <header>
         <h1>Memory Card Game</h1>
+        <Scoreboard currentScore={currentScore} bestScore={bestScore} />
       </header>
 
-      <Cardlist />
+      <Cardlist
+        updateCurrentScore={updateCurrentScore}
+        updateBestScore={updateBestScore}
+      />
 
     </div>
   );
